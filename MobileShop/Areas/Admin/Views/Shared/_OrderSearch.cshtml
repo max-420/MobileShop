@@ -1,0 +1,14 @@
+﻿@model OrderSearchVM
+
+@using (Html.BeginForm("Index", "Order", FormMethod.Get, new { @class = "form-inline" }))
+{
+    <div class="form-group">
+    @Html.LabelFor(m => m.Status, new { @class = "control-label" })
+    @Html.DropDownListFor(m => m.Status, Model.Statuses, new { @class = "form-control" })
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.TimeFilterDays, new { @class = "control-label" })
+    @Html.DropDownListFor(m => m.TimeFilterDays, Model.TimeFilters, new { @class = "form-control" })
+</div>
+<input type="submit" value="Найти" />
+}

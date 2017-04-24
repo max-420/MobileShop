@@ -1,0 +1,69 @@
+﻿@model OrdersManagePageVM
+@{
+    Html.RenderPartial("_OrderSearch", Model.Search);
+}
+@if (Model.Orders.Count() != 0)
+{
+    using (Html.BeginForm("EditOrder", "Order", FormMethod.Post))
+    {
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(o => o.Orders[0].User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(o => o.Orders[0].OrderedGoods)
+            </th>
+            <th>
+                @Html.DisplayNameFor(o => o.Orders[0].OrderTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(o => o.Orders[0].Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(o => o.Orders[0].ContactPhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(o => o.Orders[0].Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(o => o.Orders[0].Status)
+            </th>
+        </tr>
+        @for(int i = 0; i<Model.Orders.Count; i++)
+        {
+            <tr>
+                <td>
+                    @Model.Orders[i].User
+                </td>
+                <td>
+                    @foreach (MobileShop.Areas.Admin.ViewModels.OrderedGoods goods in Model.Orders[i].OrderedGoods)
+                    {
+                        <a href="@Url.Action("Details", "Catalog", new { goodsId = goods.Id })">
+                            @goods.Name
+                        </a><br>
+                    }
+                </td>
+                <td>
+                    @Model.Orders[i].OrderTime
+                </td>
+                <td>
+                    @Model.Orders[i].Address
+                </td>
+                <td>
+                    @Model.Orders[i].ContactPhoneNumber
+                </td>
+                <td>
+                    @Model.Orders[i].Comment
+                </td>
+                <td>
+                    @Html.HiddenFor(m => m.Orders[i].Id)
+                    @Html.DropDownListFor(m => m.Orders[i].Status, Model.Search.Statuses, new { @class = "form-control" })
+                </td>
+            </tr>
+        }
+    </table>
+    <input type="submit" value="Сохранить" />
+    }
+
+}

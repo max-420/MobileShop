@@ -1,0 +1,28 @@
+@model IEnumerable<GoodsPreviewVM>
+    @foreach (var item in Model)
+    {
+        <div class="row goodsListItem" id="@item.Id">
+            <div class="col-md-2">
+                <a href="@Url.Action("Details", "Catalog", new { goodsId = item.Id })">
+                    <img class="img-responsive center-block" src="@item.MainImageThumbnail">
+                </a>
+            </div>
+            <div class="col-md-7">
+                <a href="@Url.Action("Details", "Catalog", new { goodsId = item.Id })" class="goodsName">
+                    @item.Name
+                </a>
+                <div>
+                    @item.Summary
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="goodsPrice">
+                    @item.Price руб.
+                </div>
+                @Html.RatingShow(item.AvgRating)
+                @{
+                    Html.RenderPartial("_BasketButton", item.BasketState);
+                }
+            </div>
+        </div>
+}

@@ -1,0 +1,22 @@
+﻿@model OrderEditVM
+@using (Html.BeginForm("SendOrder", "Order", FormMethod.Post))
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.Address, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ContactPhoneNumber, new { @class = "control-label" })
+        @Html.TextBoxFor(m => m.ContactPhoneNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ContactPhoneNumber, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Comment, new { @class = "control-label" })
+        @Html.TextAreaFor(m => m.Comment, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Comment, "", new { @class = "text-danger" })
+    </div>
+
+    <input type="submit" value="Ok" class="btn btn-default" />
+}

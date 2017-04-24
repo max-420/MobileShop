@@ -1,0 +1,19 @@
+﻿@model CatalogPageVM
+@{
+    ViewBag.Title = "Catalog";
+}
+<h1>@Model.CategoryName</h1>
+<div class="row">
+    <div class="col-md-9">
+        <div id="catalog" class="container-fluid" data-empty-message="Товаров не найдено">
+            @{
+                Html.RenderPartial("_CatalogList", Model.GoodsPreviews);
+            }
+        </div>
+    </div>
+    <div class="col-md-3">
+        @{
+            Html.RenderPartial("_GoodsSearch", Model.GoodsSearch);
+        }
+    </div>
+</div>

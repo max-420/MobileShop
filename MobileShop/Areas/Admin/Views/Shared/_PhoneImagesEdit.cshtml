@@ -1,0 +1,23 @@
+﻿@model PhoneImagesEditVM
+@foreach (ThumbnailWithId image in Model.ImageThumbnails)
+{
+    <br />
+    using (Html.BeginForm("SetMainImage", "PhoneImagesEdit", FormMethod.Post))
+    {
+        @Html.Hidden("goodsId", Model.Id)
+        @Html.RadioButton("imageId", image.Id, (Model.MainImageId == image.Id), new { onclick = "this.form.submit()" })
+    }
+        <img src="@image.Thumbnail">
+    using (Html.BeginForm("Delete", "PhoneImagesEdit", FormMethod.Post))
+    {
+        @Html.Hidden("goodsId", Model.Id);
+        @Html.Hidden("imageId", image.Id);
+        <input type="submit" value="Удалить" />
+    }
+}
+@using (Html.BeginForm("Add", "PhoneImagesEdit", FormMethod.Post, new { encType = "multipart/form-data" }))
+{
+    @Html.Hidden("goodsId", Model.Id);
+    @Html.TextBox("postedImages", "", new { type = "file", multiple = "multiple" })
+    <input type="submit" value="Добавить"/>
+}

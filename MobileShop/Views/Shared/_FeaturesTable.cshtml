@@ -1,0 +1,26 @@
+﻿@model IEnumerable<FeaturesCategoryVM>
+@foreach(var category in Model)
+{
+    <table class="table table-bordered table-striped featuresTable">
+        <caption>@category.Name</caption>
+        @foreach (var feature in category.Features)
+        {
+        <tr>
+            <td>
+                @feature.Name
+            </td>
+            <td>
+                @if (feature.Flag == true)
+                {
+                    <span class="glyphicon glyphicon-ok featureTrue"></span>
+                }
+                @if (feature.Flag == false)
+                {
+                    <span class="glyphicon glyphicon-remove featureFalse"></span>
+                }
+                @feature.Value
+            </td>
+        </tr>
+        }
+    </table>
+}

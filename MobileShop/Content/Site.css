@@ -1,0 +1,320 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+a
+{
+	color:orange;
+}
+h2
+{
+	font-size:20px;
+}
+.sortCheckboxBlock{
+	border-style:none;
+	box-shadow:none;
+}
+
+.sortCheckbox{
+	width: 25px;
+	height: 25px;
+	border-radius: 50px;
+	color:orange;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5) inset;
+	border: 3px solid orange;
+	padding: 0;
+	text-align: center;
+	margin: 4,5px;
+}
+.sortCheckbox:hover{
+	background-color:lightgrey;
+}
+.sortCheckbox label{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.sortCheckbox input[type=checkbox]
+{
+	display:none;
+}
+.sortCheckbox input[type=checkbox] ~ label
+{
+	transition: transform 0.5s ease-out;
+}
+.sortCheckbox input[type=checkbox]:checked ~ label
+{
+	transform: rotate(180deg);
+}
+.sortCheckbox label span
+{
+	top: 50%;
+	left: 50%;
+	width: 20px;
+	height: 20px;
+	margin: -6.5px 0 0 -11px;
+	display: block;
+	position: absolute;
+}
+.goodsSearchForm > .form-group
+{
+	border: 1px solid orange;
+	padding: 0 5px 5px 5px;
+}
+.goodsSearchForm > .form-group
+{
+	border: 1px solid orange;
+	border-radius:5px;
+	padding: 0 5px 5px 5px;
+}
+.goodsSearchForm > .form-group > label
+{
+	color:white;
+	display:block;
+	background-color:orange;
+	width:auto;
+	max-width:none;
+	margin-left:-5px;
+	margin-right:-5px;
+	font-weight:inherit;
+	padding:1px 5px;
+}
+.multiselectContainer
+{
+	display:block;
+}
+.navbar
+{
+	background-color:orange;
+	margin:0;
+	border-radius:5px 5px 0 0;
+	font-size:17px;
+	padding: 12px;
+}
+.navbar-right
+{
+	margin:0;
+}
+.navbar-nav > li > a
+{
+	padding: 7px 15px;
+	display:block;
+	color:white;
+	border-radius: 7px;
+	
+}
+.navbar-nav > li > a:hover,.navbar-nav > li > a:focus,.navbar-nav > li > a:active
+{
+	background-color:white;
+	color:orange;
+}
+.goodsName
+{
+	color:orange;
+	font-size:19px;
+}
+.goodsPrice
+{
+	font-weight:bold;
+}
+.goodsListItem
+{
+	border: 1px solid orange;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+body
+{
+	background-color:lightgrey;
+}
+.body-content
+{
+	background-color:white;
+	padding:15px;
+}
+.navbar-container
+{
+	padding:0;
+}
+#menuLogin > .dropdown-menu
+{
+	min-width:300px;
+	padding:10px;
+}
+.rangeField
+{
+	display: inline-block;
+	width:45%;
+}
+.rangeField.from
+{
+	
+}
+.rangeField.to
+{
+	float:right;
+}
+.rangeSymbol
+{
+	display: inline-block;
+	color:orange;
+	font-weight:bold;
+}
+.featuresTable td
+{
+	width:50%;
+}
+.table
+{
+	margin-bottom:7px;
+}
+.goodsImagesCarousel .carousel-indicators li img
+{
+	max-width:100px;
+	max-height:100px;
+}
+.goodsImagesCarousel .carousel-indicators
+{
+	display:block;
+	bottom: inherit;
+    left: inherit;
+    margin: 5px 0px;
+    text-align: inherit;
+    z-index: inherit;
+	position:relative;
+	width:100%
+	/* overflow-y: scroll; */
+	font-size:0;
+}
+.goodsImagesCarousel .carousel-indicators li
+{
+	width:100px;
+	height:100px;
+	display:inline-block;
+	text-indent: inherit;
+	border: 3px solid lightgrey;
+	border-radius: inherit;
+	text-align: center;
+	margin: 0 0 3px 3px;
+	box-sizing: content-box;
+	padding: 1px;
+}
+.goodsImagesCarousel .carousel-inner
+{
+	width: 300px;
+	display: inline-block;
+}
+.goodsImagesCarousel .carousel-indicators .active
+{
+    border-color:orange;
+}
+.goodsImagesCarousel .carousel-control:hover, .goodsImagesCarousel .carousel-control:focus {
+    opacity: 0.9;
+    outline: 0 none;
+    text-decoration: none;
+}
+.goodsImagesCarousel .carousel-control
+{
+	opacity: 0.3;
+	color:orange;
+}
+.goodsImagesCarousel .carousel-control.right {
+    background-image: inherit;
+}
+.goodsImagesCarousel .carousel-control.left {
+    background-image: inherit;
+}
+.goodsImagesCarousel .carousel-inner > .item > img, .goodsImagesCarousel .carousel-inner > .item > a > img {
+    margin:auto;
+}
+.mediumImageBlock
+{
+	width:300px;
+	height:300px;
+}
+.featureTrue
+{
+	color:green;
+	margin-right:10px;
+}
+.featureFalse
+{
+	color:red;
+	margin-right:10px;
+}
+.detailsTabContent  .tab-pane
+{
+	padding:10px;
+}
+.reviewsList .reviewText
+{
+	padding-left:15px;
+}
+.reviewsList .rating
+{
+	padding:10px 10px 10px 15px;
+}
+.reviewsList .username
+{
+	display:inline-block;
+	font-size: 15px;
+}
+.reviewsList .sendingTime
+{
+	display:inline-block;
+	color:grey;
+	text-decoration:underline;
+	margin-left:5px;
+}
+.reviewsList>div
+{
+	padding:10px 0px;
+	border-bottom:1px solid lightgrey;
+}
+.reviewsList
+{
+	margin-bottom:10px;
+}
+.summaryList
+{
+	list-style-position: inside;
+	padding-left:0;
+	line-height:25px;
+	margin-bottom:0px;
+}
+.summaryList>li
+{
+	color:grey;
+	font-size:15px;
+}
+.basketButton
+{
+	margin-top:5px;
+	margin-bottom:5px;
+}
+.emptyMessage
+{
+	text-align:center;
+	color:grey;
+	margin: 10px 0px;
+}

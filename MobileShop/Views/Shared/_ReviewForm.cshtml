@@ -1,0 +1,19 @@
+﻿@model ReviewEditVM
+<h2>Оставить отзыв</h2>
+@using (Html.BeginForm("Add", "Review", FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @Html.HiddenFor(m => m.GoodsId)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Rating, new { @class = "control-label" })
+        @Html.RatingEditor(m => m.Rating)
+        @Html.ValidationMessageFor(m => m.Rating, "", new { @class = "text-danger" })
+    </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Text, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Text, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Text, "", new { @class = "text-danger" })
+        </div>
+        <input type="submit" value="Ok" class="btn btn-default" />
+}

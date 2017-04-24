@@ -1,0 +1,11 @@
+﻿@model IEnumerable<ReviewDisplayVM>
+<div class="reviewsList">
+@foreach (ReviewDisplayVM review in Model)
+{
+    <div>
+        <div class="username">@review.UserName</div> <div class="sendingTime">@review.SendingTime</div>
+        <div class="rating">@Html.RatingShow(review.Rating)</div>
+        <div class="reviewText">@review.Text</div>
+    </div>
+}
+</div>

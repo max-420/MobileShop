@@ -1,0 +1,63 @@
+﻿@model GoodsSearchVM
+@using (Ajax.BeginForm("Catalog", "Catalog",
+    new AjaxOptions { UpdateTargetId = "catalog", InsertionMode = InsertionMode.Replace, HttpMethod="Get" },
+    new { @class = "goodsSearchForm" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.SortBy, new { @class = "control-label" })
+        <div class="row">
+            <div class="col-md-9">
+                @Html.DropDownListFor(m => m.SortBy, Model.SortingProperties, new { @class = "form-control" })
+            </div>
+            <div class="col-md-3">
+                <div class="form-control sortCheckboxBlock">
+                    <div class="sortCheckbox">
+                        @Html.CheckBoxFor(m => m.SortAscending, new { id = "sCheckbox" })
+                        <label for="sCheckbox"><span class="glyphicon glyphicon-arrow-down"></span></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.SelectedVendors, new { @class = "control-label" })
+        @Html.ListBoxFor(m => m.SelectedVendors, Model.VendorsList, new { @class = "checkboxMultiselect", SelectionMode = "Multiple" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PriceRange, new { @class = "control-label" })
+        @RangeHelper("PriceRange", Model.PriceRange.Lower, Model.PriceRange.Upper)
+    </div>
+
+    
+}
+@helper RangeHelper(string name, double? min, double? max)
+        {
+            @Html.TextBox(name + ".Lower", min, new { @class = "form-control rangeField from" })
+            <div class="rangeSymbol">&mdash;</div>
+            @Html.TextBox(name + ".Upper", max, new { @class = "form-control rangeField to" })
+}
+@Html.Resource(@<script type="text/javascript" src="~/Scripts/bootstrap-multiselect.js"></script>, "js")
+@Html.Resource(@<script type="text/javascript">
+        $(document).ready(function () {
+            $('.checkboxMultiselect').multiselect({
+                nonSelectedText: 'Не выбрано',
+                buttonClass: 'form-control',
+                buttonContainer: '<div class="btn-group multiselectContainer" />'
+            });
+        });
+        $('.goodsSearchForm input, .goodsSearchForm select').change(function () {
+            $('.goodsSearchForm').submit();
+        });
+        $('.goodsSearchForm').keyup(function () {
+            var $this = $(this);
+            var $delay = 1000;
+
+            clearTimeout($this.data('timer'));
+
+            $this.data('timer', setTimeout(function () {
+                $this.removeData('timer');
+                $('.goodsSearchForm').submit();
+            }, $delay));
+        });
+    </script>, "js")
+@Html.Resource(@<link rel="stylesheet" href="~/Content/bootstrap-multiselect.css" type="text/css" />, "css")

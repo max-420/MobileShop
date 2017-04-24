@@ -1,0 +1,87 @@
+﻿@model GoodsDetailsVM
+@{
+    ViewBag.Title = "Details";
+}
+<h1>@Model.Name</h1>
+<div id="myCarousel" class="carousel slide goodsImagesCarousel" data-interval="false">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="carousel-inner images_container" role="listbox">
+                @foreach (var img in Model.GoodsImages)
+            {
+                    <div class="@((img.IsMain)?"item active":"item")">
+                        <a href="@img.Big">
+                            <img src="@img.Medium" />
+                        </a>
+                    </div>
+                }
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <ul class="summaryList">
+                @foreach (string str in Model.Summary)
+                {
+                    <li>@str</li>
+                }
+            </ul>
+            @Html.RatingShow(Model.AvgRating)
+            @{
+                Html.RenderPartial("_BasketButton", Model.BasketState);
+            }
+        </div>
+    </div>
+    <ol class="carousel-indicators">
+        @{int i = 0;}
+        @foreach (var img in Model.GoodsImages)
+            {
+            <li data-target="#myCarousel" data-slide-to="@i" class="@((img.IsMain) ? "active" : "")">
+                <img src="@img.Small" />
+            </li>
+            i++;
+        }
+    </ol>
+</div>
+    <!-- Навигация -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active"><a href="#features" aria-controls="features" role="tab" data-toggle="tab">Характеристики</a></li>
+        <li><a href="#reviews" aria-controls="reviews" role="tab" data-toggle="tab">Отзывы</a></li>
+    </ul>
+    <!-- Содержимое вкладок -->
+    <div class="tab-content detailsTabContent">
+        <div role="tabpanel" class="tab-pane @(Model.Tab=="features"?"active":"")" id="features">
+            @{
+                Html.RenderPartial("_FeaturesTable", Model.FeaturesCategories);
+            }
+        </div>
+        <div role="tabpanel" class="tab-pane @(Model.Tab=="reviews"?"active":"")" id="reviews">
+            @{
+                Html.RenderAction("GetReviews", "Review", new { goodsId = Model.Id });
+            }
+            @{
+                Html.RenderPartial("_ReviewForm", new ReviewEditVM { GoodsId = Model.Id });
+            }
+        </div>
+    </div>
+    @section Scripts
+{
+        <script src="@Url.Content("~/Scripts/RatingEditor.js")"></script>
+    }
+@Html.Resource(@<script src="@Url.Content("~/Scripts/jquery.magnific-popup.js")"></script>, "js")
+@Html.Resource(@<script>
+    $('.images_containerq').magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        gallery: {
+            enabled: true
+        }
+    });
+    </script>, "js")
+<link rel="stylesheet" href="@Url.Content("~/Content/magnific-popup.css")" />

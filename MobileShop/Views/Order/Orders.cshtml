@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Orders";
+}
+<h2>Корзина</h2>
+<div class="container" data-empty-message="Корзина пуста">
+    @{
+        Html.RenderAction("GetBasketItems", "Order");
+    }
+</div>
+<h2>Заказы</h2>
+@{
+    Html.RenderAction("GetOrders", "Order");
+}
+<h2>Отправить заказ</h2>
+@{
+    Html.RenderPartial("_OrderForm");
+}
+@Html.Resource(@<script type="text/javascript">
+    onDeleteFromBasket.deleteEntry = true;
+    </script>, "js")

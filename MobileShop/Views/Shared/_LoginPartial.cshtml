@@ -1,0 +1,67 @@
+﻿@model LoginViewModel
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Настройки", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Выход</a></li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Регистрация", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        @*<li class="dropdown" id="menuRegister">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navRegister">Регистрация</a>
+            <div class="dropdown-menu">
+                
+            </div>
+        </li>*@
+        <li class="dropdown" id="menuLogin">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Вход</a>
+            <div class="dropdown-menu">
+                <section id="loginForm">
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <input type="submit" value="Log in" class="btn btn-default" />
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                    @Html.LabelFor(m => m.RememberMe)
+                                </div>
+                            </div>
+                        </div>
+                <p>
+                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                </p>
+                    }
+                </section>
+            </div>
+        </li>
+    </ul>
+}

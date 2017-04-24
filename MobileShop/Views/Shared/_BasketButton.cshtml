@@ -1,0 +1,17 @@
+﻿@model BasketButtonVM
+@using (Ajax.BeginForm("DeleteFromBasket", "Order", new { }, 
+    new AjaxOptions { OnSuccess = "onDeleteFromBasket('" + Model.PhoneId.ToString() + "')",
+    HttpMethod = "Post" },
+    new { Id = Model.PhoneId, @class = "DeleteFromBasketButton basketButton", style = (!Model.IsInBasket) ? "display:none" : "" }))
+{
+    @Html.Hidden("goodsId", Model.PhoneId)
+    <button type="submit" class="btn btn-danger">Удалить из корзины</button>
+}
+@using (Ajax.BeginForm("AddToBasket", "Order", new { },
+    new AjaxOptions { OnSuccess = "onAddToBasket('" + Model.PhoneId.ToString()+"')",
+        HttpMethod = "Post" },
+    new { Id = Model.PhoneId, @class = "AddToBasketButton basketButton", style = (Model.IsInBasket) ? "display:none" : "" }))
+{
+    @Html.Hidden("goodsId", Model.PhoneId)
+    <button type="submit" class="btn btn-success">В корзину</button>
+}
