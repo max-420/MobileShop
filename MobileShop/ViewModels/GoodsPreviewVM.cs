@@ -8,6 +8,10 @@ namespace MobileShop.ViewModels
 {
     public class GoodsPreviewVM
     {
+        public GoodsPreviewVM()
+        {
+
+        }
         public GoodsPreviewVM(Goods goods, bool isInBasket)
         {
             Id = goods.Id;

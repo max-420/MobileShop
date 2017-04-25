@@ -15,7 +15,7 @@ namespace MobileShop.Models
         public IEnumerable<string> SortingProperties { get; set; }
         public bool? SortAscending { get; set; }
 
-        public IEnumerable<string> VendorsList;
+        public IEnumerable<string> VendorsList { get; set; }
         public IEnumerable<string> Vendors { get; set; }
 
         public Range PriceRange { get; set; }

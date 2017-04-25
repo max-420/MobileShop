@@ -234,6 +234,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -251,6 +252,8 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\PhoneImagesEditController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
+    <Compile Include="DTO\GoodsSearchDTO.cs" />
+    <Compile Include="DTO\GoodsSearchResultDTO.cs" />
     <Compile Include="Models\Attributes\GoodsType.cs" />
     <Compile Include="Models\GoodsSearchResult.cs" />
     <Compile Include="Models\OrderSearch.cs" />
