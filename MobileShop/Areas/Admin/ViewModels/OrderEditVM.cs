@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using AutoMapper;
 
 namespace MobileShop.Areas.Admin.ViewModels
 {
@@ -11,7 +12,7 @@ namespace MobileShop.Areas.Admin.ViewModels
     {
         public OrderEditVM()
         {
-
+            
         }
         public OrderEditVM(Order order)
         {

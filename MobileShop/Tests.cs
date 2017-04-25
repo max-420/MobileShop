@@ -10,7 +10,7 @@ using MobileShop.Services;
 using MobileShop.Models;
 using MobileShop.ViewModels;
 using System.Web.UI;
-using FakeHttpContext;
+using AutoMapper;
 using Moq;
 
 namespace MobileShop
@@ -27,7 +27,7 @@ namespace MobileShop
         [Test]
         public void VM()
         {
-            var gdvm = new GoodsDetailsVM(new Phone(), true, "features");
+            
         }
     }
 }

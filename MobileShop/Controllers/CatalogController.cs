@@ -10,6 +10,7 @@ using MobileShop.Repository;
 using MobileShop.Services;
 using Microsoft.AspNet.Identity;
 using System.Reflection;
+using AutoMapper;
 
 namespace MobileShop.Controllers
 {
@@ -32,7 +33,7 @@ namespace MobileShop.Controllers
             }
             else
             {
-                CatalogPageVM catalogPageVM = new CatalogPageVM(gsr, areInBasket);
+                CatalogPageVM catalogPageVM = Mapper.Map<GoodsSearchResult, CatalogPageVM>(gsr);//new CatalogPageVM(gsr, areInBasket);
                 return View(catalogPageVM);
             }
         }
